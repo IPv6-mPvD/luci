@@ -548,6 +548,20 @@ if has_dnsmasq and net:proto() == "static" then
 		s:taboption("ipv6", DynamicList, "dns", translate("Announced DNS servers"))
 		s:taboption("ipv6", DynamicList, "domain", translate("Announced DNS domains"))
 
+		o = s:taboption("ipv6", Value, "prefix_filter", translate("RA Prefix Filter"))
+		o.datatype = "ip6addr"
+		o.rmempty = true
+
+		s:taboption("ipv6", Value, "pvd_id", translate("Provisioning Domain ID"))
+
+		s:taboption("ipv6", Flag, "pvd_http", translate("PvD HTTP support"),
+			translate("PvD HTTP Support"))
+		s:taboption("ipv6", Flag, "pvd_legacy", translate("PvD Legacy (IPv4) bit"),
+			translate("PvD Legacy (IPv4) bit"))
+		o = s:taboption("ipv6", Value, "pvd_sequence", translate("PvD Sequence Number"),
+				translate("PvD Sequence Number"))
+		o.datatype = "uinteger"
+
 	else
 		m2 = nil
 	end
